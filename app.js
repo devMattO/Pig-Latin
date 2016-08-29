@@ -2,15 +2,12 @@
 
 let checkForBeginningVowels = ( input, vowels ) => {
   let arr = input;
-  for (let i = 0; i < vowels.length; i++) {
-    if(input[0] === vowels[i]){
-      arr.push('ay');
-    }else{
-      return null;
-    }
-  }
-  let translatedWord = arr.join('');
-  return translatedWord;
+    vowels.filter((el)=>{
+      if(el === input[0]){
+        return arr.push('ay');
+      }
+    });
+    return arr.join('');
 };
 
 let checkForFirstVowel = ( input, vowels ) => {
@@ -33,12 +30,12 @@ let pigLatinTranslator = input => {
   let vowels = ['a','e','i','o','u'];
   let translation = input.split('');
   let completedTranslation;
-  // completedTranslation = checkForBeginningVowels(translation,vowels);
-  completedTranslation = checkForFirstVowel(translation,vowels);
+  completedTranslation = checkForBeginningVowels(translation,vowels);
+  // completedTranslation = checkForFirstVowel(translation,vowels);
   return completedTranslation;
 };
 
-console.log(pigLatinTranslator("shreddddding"), 'outside func');
+console.log(pigLatinTranslator("ate"), 'outside func');
 
 
 
